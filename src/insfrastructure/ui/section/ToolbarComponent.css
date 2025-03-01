@@ -1,0 +1,74 @@
+/* Estilos para ToolbarComponent */
+.toolbar-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 0px;
+    height: auto;
+    min-height: max-content;
+    overflow: hidden;
+}
+
+.toolbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    height: 59px;
+}
+
+.back-button {
+    /* border: 1.5px solid white; */
+    background: #007bff;
+    color: white;
+    border:none;
+    padding: 2px 10px;
+    font-size: 14px;
+    border-radius: 100px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    font-weight: 600;
+}
+
+.back-button svg path {
+    fill: white;
+}
+
+.back-button:hover {
+    background-color: white;
+    color: #007bff;
+    border: 1px solid #007bff;
+}
+
+.back-button:hover svg path{
+    fill: #007bff;
+}
+
+.toolbar-label {
+    font-size: 20px;
+    color: var(--main-text-color);
+    font-weight: bold;
+    margin: 0;
+}
+
+.extra-elements {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toolbar-children {
+    overflow-y: auto;
+    height: auto;
+}
+
+.title-container {
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+}

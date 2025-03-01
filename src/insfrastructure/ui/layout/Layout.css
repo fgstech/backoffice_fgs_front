@@ -1,0 +1,219 @@
+:root {
+    --bg-sidebar-left: #007bff;
+    --bg-sidebar-right: #fff;
+    --bg-navbar: #fff;
+    --bg-content: #fff;
+    --color-text-active: #fff;
+    --color-text: #fff;
+}
+
+.layout-container {
+    display: flex;
+    height: 100vh;
+}
+
+.layout-sidebar {
+    width: 260px;
+    background: var(--bg-sidebar-left);
+    color: var(--color-text);
+    padding: 0;
+    box-sizing: border-box;
+    /* border-right: 1px solid var(--bg-content); */
+}
+
+.layout-logo {
+    font-size: 24px;
+    font-weight: bold;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+    z-index: 999999999;
+    color: var(--bg-sidebar-left);
+    background: var(--bg-navbar);
+}
+
+.layout-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.layout-menu-item {
+    padding: 10px 0px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    background: var(--bg-sidebar-left);
+    transition: background 0.3s ease;
+    align-items: center;
+    font-size: 15px;
+    display: flex;
+}
+
+.layout-menu-item svg {
+    margin-right: 8px;
+}
+
+.layout-menu-item svg path{
+    stroke: var(--color-text);
+}
+
+.layout-menu-item:hover {
+    background: var(--bg-sidebar-left);
+    color: var(--color-text-active);
+}
+
+.layout-menu-item:hover svg path{
+    stroke: var(--color-text-active);
+}
+
+.layout-sub-menu {
+    padding-left: 0px;
+    margin-top: 5px;
+}
+
+.layout-sub-menu-item {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    background: var(--bg-sidebar-left);
+    transition: background 0.3s ease;
+    align-items: center;
+    font-size: 15px;
+}
+
+.layout-sub-menu-item svg {
+    margin-right: 8px;
+}
+
+.layout-sub-menu-item:hover {
+    background: var(--bg-sidebar-left);
+    color: var(--color-text-active);
+}
+
+.layout-sub-menu-item svg path{
+    stroke: var(--color-text);
+}
+
+.layout-sub-menu-item:hover svg path{
+    stroke: var(--color-text-active);
+}
+
+.layout-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-content);
+    overflow: auto;
+    /* Evitar que se extienda fuera del contenedor */
+}
+
+.layout-navbar {
+    background: var(--bg-navbar);
+    color: var(--color-text-active);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.layout-navbar-item {
+    cursor: pointer;
+}
+
+.layout-navbar .items-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+.layout-navbar-button {
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    background: var(--bg-sidebar-left);
+    color: var(--color-text);
+    border-radius: 5px;
+    outline: 0 !important;
+}
+
+.layout-navbar-button svg path {
+    stroke: var(--color-text-active);
+}
+
+.layout-content {
+    flex: 1;
+    padding: 15px 40px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+/* Right Sidebar */
+.layout-right-sidebar {
+    width: 300px;
+    background: var(--bg-sidebar-right);
+    box-shadow: -2px 0 40px 0 rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0;
+    right: -320px;
+    height: 100%;
+    overflow-y: auto;
+    transition: right 0.3s ease;
+}
+
+.layout-right-sidebar svg path {
+    stroke: var(--color-text-active)
+}
+
+.layout-right-sidebar.open {
+    right: 0;
+}
+
+.layout-right-sidebar.closed {
+    right: -300px;
+}
+
+.layout-right-sidebar-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--bg-sidebar-right);
+    color: var(--color-text-active);
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    outline: 0 !important;
+}
+
+.layout-right-sidebar-close svg path {
+    stroke: var(--color-text-active)
+}
+
+.layout-right-sidebar-close:hover svg path {
+    fill: var(--main-text-color);
+    stroke: #fff;
+}
+
+.layout-right-sidebar-content {
+    margin-top: 40px;
+    padding: 20px;
+}
+
+/* Estilos para los elementos activos */
+.layout-menu-item.active,
+.layout-sub-menu-item.active,
+.layout-navbar-item.active {
+    color: var(--color-text-active);
+    font-weight: bold;
+}
+
+
+.layout-menu-item.active svg path, .layout-sub-menu-item.active svg path{
+    stroke: var(--color-text-active);
+}
