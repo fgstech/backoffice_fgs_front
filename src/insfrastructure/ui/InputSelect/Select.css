@@ -44,13 +44,13 @@
 
 .bk-select-display {
     background-color: #F4F7FE;
-    border: 1px solid #F4F7FE;
+    border: 1px solid #ccc;
     padding: 5px 10px;
     cursor: pointer;
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
-    min-height: 40px;
+    min-height: 42px;
     align-items: center;
     width: 100%;
     border-radius: var(--buttons-border-radius);

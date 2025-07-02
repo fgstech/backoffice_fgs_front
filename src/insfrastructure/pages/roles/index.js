@@ -16,7 +16,8 @@ const RoleView = ({ ...props }) => {
         openRemove,
         setOpenRemove,
         remove,
-        goBack
+        goBack,
+        goNew
     } = RoleController(props);
     return <>
         <Page>
@@ -28,7 +29,7 @@ const RoleView = ({ ...props }) => {
                     fullPage={true}
                     showLabel={false}
                 />
-                <FloatingButton position="bottom-right" onClick={goView}></FloatingButton>
+                <FloatingButton position="bottom-right" onClick={goNew}></FloatingButton>
                 <ModalConfirm isOpen={openRemove} onClose={() => setOpenRemove(false)} onAccept={remove} />
             </ToolbarComponent>
         </Page>

@@ -1,17 +1,25 @@
 import axios from 'axios';
 
-export default class UserAPI {
-    static getAll(data) {
+const api = axios.create({
+    baseURL: 'https://api.quiz.xn--am-yja.org/api/quizzes',
+    timeout: 10000,
+    headers: { 'Content-Type': 'application/json', "x-api-key": 'FGSAPIKEY' }
+});
+
+export default class QuizzAPI {
+    static getAll() {
         return new Promise((resolve, reject) => {
-            axios.get(`/backoffice/user_system/all`)
-                .then(res => resolve(res.data))
+            api.get(`/`)
+                .then(res => {
+                    resolve(res.data)
+                })
                 .catch(err => reject(err))
         });
     }
 
     static create(data) {
         return new Promise((resolve, reject) => {
-            axios.post(`/backoffice/user_system/register`, data)
+            api.post(`/`, data)
                 .then(res => resolve(res.data))
                 .catch(err => reject(err))
         });
@@ -19,7 +27,7 @@ export default class UserAPI {
 
     static getById(id) {
         return new Promise((resolve, reject) => {
-            axios.get(`/backoffice/user_system/id/${id}`)
+            api.get(`/${id}`)
                 .then(res => resolve(res.data))
                 .catch(err => reject(err))
         });
@@ -27,7 +35,7 @@ export default class UserAPI {
 
     static update(id, data) {
         return new Promise((resolve, reject) => {
-            axios.put(`/backoffice/user_system/${id}`, data)
+            api.put(`/${id}`, data)
                 .then(res => resolve(res.data))
                 .catch(err => reject(err))
         });
@@ -35,15 +43,7 @@ export default class UserAPI {
 
     static remove(id) {
         return new Promise((resolve, reject) => {
-            axios.delete(`/backoffice/user_system/${id}`)
-                .then(res => resolve(res.data))
-                .catch(err => reject(err))
-        });
-    }
-
-    static changePassword(id, data) {
-        return new Promise((resolve, reject) => {
-            axios.put(`/backoffice/user_system/password/${id}`, data)
+            api.delete(`/${id}`)
                 .then(res => resolve(res.data))
                 .catch(err => reject(err))
         });

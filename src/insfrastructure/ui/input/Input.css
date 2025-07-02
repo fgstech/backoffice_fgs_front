@@ -309,3 +309,13 @@
 .autocomplete-suggestions li:hover {
     background-color: #f0f0f0;
 }
+
+.bk-percentage-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.bk-percentage-symbol {
+  font-weight: bold;
+}

@@ -14,3 +14,14 @@ export const grantPermission = (requestedRoles = []) => {
 
 export const UnlockAccess = ({ children, request }) => <>{grantPermission(request) && children}</>;
 export const RoleBasedRouting = ({ component: Component, roles, redirect = '/', ...rest }) => grantPermission(roles) ? <Route {...rest} render={(props) => <Component {...props} />} /> : <Route render={() => <Redirect to={redirect} />} />;
+
+
+const ProtectedComponent = ({ userPermissions, requiredPermission, children }) => {
+    if (!userPermissions.includes(requiredPermission)) {
+        return null; // O puedes mostrar un mensaje de "Acceso denegado"
+    }
+
+    return <>{children}</>;
+};
+
+export default ProtectedComponent;

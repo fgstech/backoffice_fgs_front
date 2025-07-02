@@ -21,5 +21,7 @@ export default {
     ecosystem_users:[],
     summary_employing:{},
     report_employing:[],
-    jobboard_report:{}
+    jobboard_report:{},
+    quizzes: [],
+    vquizz: {}
 }

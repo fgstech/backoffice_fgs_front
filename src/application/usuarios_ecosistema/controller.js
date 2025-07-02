@@ -17,7 +17,6 @@ class EcosystemUserController {
             KeycloakAPI.getUsers()
                 .then(res => {
                     const data = res.data;
-                    console.log(data);
                     const ecosystem_users = data.map(e => Applications.parseDataBySelect(e, e.name));
                     Applications.updateState(state => ({ ecosystem_users }));
                     resolve(ecosystem_users);

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./AttendanceTable.css"; // Importar estilos opcionales
+import Input from '../input'
 
 const AttendanceTable = ({ students, onAttendanceChange }) => {
     // Estado para almacenar la asistencia de cada alumno
     const [attendance, setAttendance] = useState(
-        students.map(student => ({ ...student, attended: false }))
+        students.map(student => ({ ...student, attended: false, observation: "" }))
     );
 
     useEffect(() => {
@@ -23,6 +24,15 @@ const AttendanceTable = ({ students, onAttendanceChange }) => {
         }
     };
 
+    const handleChange = (index, value) => {
+        const updatedAttendance = [...attendance];
+        updatedAttendance[index].observation = value;
+        setAttendance(updatedAttendance);
+        if (onAttendanceChange) {
+            onAttendanceChange(updatedAttendance);
+        }
+    };
+
     return (
         <div className="table-container">
             <label>Lista de Asistencia</label>
@@ -32,6 +42,7 @@ const AttendanceTable = ({ students, onAttendanceChange }) => {
                         <th>Nombre</th>
                         <th>Correo</th>
                         <th>Asistencia</th>
+                        <th>Observación</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,11 +51,10 @@ const AttendanceTable = ({ students, onAttendanceChange }) => {
                             <td>{student.name}</td>
                             <td>{student.email}</td>
                             <td>
-                                <input
-                                    type="checkbox"
-                                    checked={student.attended}
-                                    onChange={() => handleCheckboxChange(index)}
-                                />
+                                <Input type="checkbox" value={student.attended} onChange={() => handleCheckboxChange(index)}  />
+                            </td>
+                            <td>
+                                <Input type="text" value={student.observation} onChange={(e) => handleChange(index, e)} />
                             </td>
                         </tr>
                     ))}

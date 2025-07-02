@@ -48,11 +48,14 @@ class Application extends Ngex {
     }
 
     async loadMain() {
-        const permissionsRole = await AxiosService.getPermissionRole();
-        const role = permissionsRole.name;
-        const permissions = permissionsRole.permissions;
+        const { permissions, role } = await AxiosService.getPermissionRole();
+        console.log(permissions, role)
         this.updateState(state => ({ role }));
         this.updateState(state => ({ permissions }));
+    }
+
+    async getPermissions() {
+        return await AxiosService.getPermissionRole();
     }
 
     getLS(key) {

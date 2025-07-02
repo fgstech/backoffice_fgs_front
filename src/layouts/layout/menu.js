@@ -21,7 +21,7 @@ const routes = [
         label: "Academia",
         pos: 10,
         key: "Academia",
-        permissions: null,
+        permissions: ['academia-bootcamps_read', "all_permission_forever"],
         subMenus: [
             {
                 icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,20 +33,23 @@ const routes = [
                 pos: 10,
                 key: "Bootcamps",
                 path: "/bootcamps",
-                permissions: null,
+                permissions: ['academia-bootcamps_read', "all_permission_forever"],
             },
-            // {
-            //     icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            //         <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            //         <path d="M15.5 18.5C16.6 18.5 17.5 17.6 17.5 16.5V7.5C17.5 6.4 16.6 5.5 15.5 5.5C14.4 5.5 13.5 6.4 13.5 7.5V16.5C13.5 17.6 14.39 18.5 15.5 18.5Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            //         <path d="M8.5 18.5C9.6 18.5 10.5 17.6 10.5 16.5V13C10.5 11.9 9.6 11 8.5 11C7.4 11 6.5 11.9 6.5 13V16.5C6.5 17.6 7.39 18.5 8.5 18.5Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            //     </svg>,
-            //     label: "Reporte Asistencia",
-            //     pos: 10,
-            //     key: "Reporte de asistencia",
-            //     path: "/",
-            //     permissions: null,
-            // },
+            {
+                icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 19.5H21" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M11 12.5H21" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M11 5.5H21" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M3 5.5L4 6.5L7 3.5" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M3 12.5L4 13.5L7 10.5" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M3 19.5L4 20.5L7 17.5" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>,
+                label: "Quizzes",
+                pos: 11,
+                key: "Quizzes",
+                path: "/quizz",
+                permissions: ['academia-quiz_read', "all_permission_forever"],
+            },
         ]
     },
     {
@@ -58,7 +61,7 @@ const routes = [
         label: "Talentos",
         pos: 10,
         key: "Talentos",
-        permissions: null,
+        permissions: ["talentos-empleadores_read", "talentos-aplicaciones_read", "talentos-trabajos_read", "talentos-perfiles_read", "all_permission_forever"],
         subMenus: [
             {
                 icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,7 +72,7 @@ const routes = [
                 pos: 10,
                 key: "Empleadores",
                 path: "/employment/employers",
-                permissions: null,
+                permissions: ["talentos-empleadores_read", "all_permission_forever"],
             },
             {
                 icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,7 +83,7 @@ const routes = [
                 pos: 10,
                 key: "Ofertas laborales",
                 path: "/employment/jobs",
-                permissions: null,
+                permissions: ["talentos-trabajos_read", "all_permission_forever"],
             },
             {
                 icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +94,7 @@ const routes = [
                 pos: 10,
                 key: "Postulaciones",
                 path: "/employment/applications",
-                permissions: null,
+                permissions: ["talentos-aplicaciones_read", "all_permission_forever"],
             },
             {
                 icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -102,7 +105,7 @@ const routes = [
                 pos: 10,
                 key: "Perfiles",
                 path: "/employment/profiles",
-                permissions: null,
+                permissions: ["talentos-perfiles_read", "all_permission_forever"],
             },
             {
                 icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -117,7 +120,7 @@ const routes = [
                 pos: 10,
                 key: "Reporte de empleabilidad",
                 path: "/employment/report",
-                permissions: null,
+                permissions: ["talentos-empleabilidad_read", "all_permission_forever"],
             },
         ]
     },
@@ -133,7 +136,7 @@ const routes = [
         label: "Ecosistema",
         pos: 10,
         key: "Ecosistema",
-        permissions: null,
+        permissions: ["ecosistema-usuarios_read", "all_permission_forever"],
         subMenus: [
             {
                 icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -148,7 +151,7 @@ const routes = [
                 pos: 10,
                 key: "Usuarios",
                 path: "/ecosystem/users",
-                permissions: null,
+                permissions: ["ecosistema-usuarios_read", "all_permission_forever"],
             },
         ]
     },
@@ -159,7 +162,7 @@ const routes = [
         </svg>,
         label: "Configuración",
         key: "config",
-        permissions: null,
+        permissions: ["usuarios_read", "roles_read", "all_permission_forever"],
         subMenus: [
             {
                 icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -169,7 +172,7 @@ const routes = [
                 label: "Usuarios",
                 key: "users",
                 path: "/config/users",
-                permissions: ["usersystem_view", "all_permission_forever"]
+                permissions: ["usuarios_read", "all_permission_forever"]
             },
             {
                 icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -180,7 +183,7 @@ const routes = [
                 label: "Roles de usuario",
                 key: "user_role",
                 path: "/config/roles",
-                permissions: ["role_user_view", "all_permission_forever"]
+                permissions: ["roles_read", "all_permission_forever"]
             },
         ]
     }

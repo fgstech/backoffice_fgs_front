@@ -12,6 +12,7 @@ class BootcampController {
     studentsColumns = [
         { key: 'username', label: 'Nombre' },
         { key: 'email', label: 'Correo eléctronico' },
+        { key: 'phone', label: 'Teléfono' },
         { key: "asistenca", label: "% Asistencia", style: { textAlign: "center" } },
     ]
 
@@ -39,6 +40,7 @@ class BootcampController {
             SchoolAPI.getBootcampsById(id)
                 .then(res => {
                     const vbootcamp = res.data;
+                    console.log("vbootcamp >",vbootcamp);
                     Applications.updateState(state => ({ vbootcamp }));
                     resolve(vbootcamp)
                 })

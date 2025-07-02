@@ -56,6 +56,7 @@ const RoleApplication = (props) => {
     }, [view])
 
     const goView = (id) => NavigationService.navigateTo(`/config/roles/${id}`);
+    const goNew = () => NavigationService.navigateTo(`/config/roles/new`);
     const goBack = () => NavigationService.navigateBack()
 
     const handlePermissionsChange = (updatedPermissions) => setRolePermissions(updatedPermissions);
@@ -104,6 +105,7 @@ const RoleApplication = (props) => {
         customElements,
         goBack,
         goView,
+        goNew,
         modulesRole,
         rolPermissions,
         handlePermissionsChange,

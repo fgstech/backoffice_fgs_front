@@ -3,6 +3,7 @@ import BootcampsController from "../../../application/bootcamps";
 import DynamicTable from "../../ui/table2";
 import ToolbarComponent from "../../ui/section";
 import Loader from "../../ui/loader";
+import './style.css';
 
 const BootcampsView = ({ ...props }) => {
     const {

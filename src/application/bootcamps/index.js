@@ -11,8 +11,10 @@ const BootcampsApplication = (props) => {
     const [attendance, setAttendance] = useState([]);
     const [attendanceList, setAttendanceList] = useState([]);
     const [studentsColumns, setStudentsColumns] = useState([]);
+    const [observations,setObservations] = useState(null);
     const [customElementsStudents, setCustomElementsStudents] = useState({
-        asistenca: (data) => <div style={{ textAlign: "center", fontWeight: 600 }}>{data.asistenca}</div>
+        asistenca: (data) => <div style={{ textAlign: "center", fontWeight: 600 }}>{data.asistenca === "NaN%" ? "0%" : data.asistenca}</div>,
+        phone: (data) => data?.fields?.cf_numerodetelefono || "-",
     });
     const [view, setView] = useState(null);
     const [viewTitle, setViewTitle] = useState(null);
@@ -36,6 +38,7 @@ const BootcampsApplication = (props) => {
                 </IconButton>
             </div>
         ),
+        tags: data => data.tags.map(e => <span className="bootcamp-tag">{e}</span>)
     };
 
     useEffect(async () => {
@@ -125,21 +128,18 @@ const BootcampsApplication = (props) => {
             bootcampId: view.id,
             bootcampName: view.title,
             date: selectedDate,
+            observations: observations,
             attendance: attendanceList.map(e => ({
                 studentName: e.username,
                 studentEmail: e.email,
                 studentId: e.id,
-                presence: e.attended
+                presence: e.attended,
+                observation: e.observation,
             }))
         }
 
-        console.log(data)
-
         BootcampsController.createAttendance(data)
-            .then(res => {
-                Applications.notify({ title: "Exito!", type: "success", text: "success" })
-                // setConfirmCreate(false);
-            })
+            .then(res => Applications.notify({ title: "Exito!", type: "success", text: "success" }))
             .catch(err => Applications.notify({ title: "Error", type: "error", text: err }))
     }
 
@@ -159,6 +159,8 @@ const BootcampsApplication = (props) => {
         selectedDate,
         setSelectedDate,
         createAttendance,
+        observations,
+        setObservations,
     }
 }
 

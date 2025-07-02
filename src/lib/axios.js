@@ -48,9 +48,11 @@ class AxiosService {
         return payload;
     }
 
-    async getPermissionRole(){
+    async getPermissionRole() {
         const payload = await this.getPayload();
-        return payload.permissions;
+        const permissions = payload.permissions ? payload.permissions.permissions : payload.roles;
+        const role = payload.permissions ? payload.permissions.name : "superadmin";
+        return { role, permissions };
     }
 
     isAuthenticated() {
@@ -128,7 +130,6 @@ class AxiosService {
                 originalRequest._retry = true; // Evita bucles infinitos
                 try {
                     const newAccessToken = await this.refreshToken();
-                    console.log("RefreshToken: ", newAccessToken)
                     originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
                     return axios(originalRequest); // Reintenta la solicitud
                 } catch (err) {

@@ -18,6 +18,10 @@
     height: 59px;
 }
 
+.toolbar-content.toolbar-content-panel-navbar{
+    justify-content: flex-end!important;
+}
+
 .back-button {
     /* border: 1.5px solid white; */
     background: #007bff;
@@ -64,6 +68,7 @@
 .toolbar-children {
     overflow-y: auto;
     height: auto;
+    height: calc(100vh - 20px);
 }
 
 .title-container {

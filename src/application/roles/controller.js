@@ -8,7 +8,18 @@ class RoleController {
         { key: 'actions', label: 'Acciones' }
     ];
 
-    modulesRole = ["usuarios", "roles", "asistencia", "reporteria", "reporte_empleabilidad", "flujo_encuesta_empleabilidad"];
+    modulesRole = [
+        "usuarios", 
+        "roles", 
+        "academia-bootcamps", 
+        "academia-quiz",
+        "talentos-trabajos",
+        "talentos-perfiles",
+        "talentos-aplicaciones",
+        "talentos-empleabilidad", 
+        "talentos-empleadores",
+        "ecosistema-usuarios",
+    ];
 
     getRoles() {
         return new Promise((resolve, reject) => {

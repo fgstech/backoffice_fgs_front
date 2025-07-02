@@ -16,6 +16,10 @@ import ProfilesJobsView from '../insfrastructure/pages/profilesjobs';
 import ApplicationsJobsView from '../insfrastructure/pages/applicationsjobs';
 import EcosystemUsersView from '../insfrastructure/pages/usuarios_ecosistema';
 import EmployerReportView from '../insfrastructure/pages/employer_report';
+import QuizBuilderPage from '../insfrastructure/pages/quizz';
+import QuizzesPage from '../insfrastructure/pages/quizz/list';
+import QuizViewPage from '../insfrastructure/pages/quizz/view';
+import ProfilePage from '../insfrastructure/pages/profile';
 
 const PanelView = () => {
         return <>
@@ -27,6 +31,7 @@ const Rutas = () => (
         <Switch>
                 {/* rutas globales */}
                 <RoleBasedRouting path="/" exact component={PanelView}></RoleBasedRouting>
+                <RoleBasedRouting path="/profile" exact component={ProfilePage}></RoleBasedRouting>
                 <RoleBasedRouting path="/config/users" exact component={UserView}></RoleBasedRouting>
                 <RoleBasedRouting path="/config/users/new" exact component={NewUserView}></RoleBasedRouting>
                 <RoleBasedRouting path="/config/users/:id" exact component={NewUserView}></RoleBasedRouting>
@@ -42,6 +47,9 @@ const Rutas = () => (
                 <RoleBasedRouting path="/employment/profiles" exact component={ProfilesJobsView}></RoleBasedRouting>
                 <RoleBasedRouting path="/ecosystem/users" exact component={EcosystemUsersView}></RoleBasedRouting>
                 <RoleBasedRouting path="/employment/report" exact component={EmployerReportView}></RoleBasedRouting>
+                <RoleBasedRouting path="/quizz" exact component={QuizzesPage}></RoleBasedRouting>
+                <RoleBasedRouting path="/quizz/create" exact component={QuizBuilderPage}></RoleBasedRouting>
+                <RoleBasedRouting path="/quizz/:id" exact component={QuizViewPage}></RoleBasedRouting>
         </Switch>
 );
 

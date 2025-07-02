@@ -6,12 +6,14 @@ const ToolbarComponent = ({
     showBackButton = false, // Opción booleana para mostrar el botón de volver
     onBackClick = () => { }, // Función que se ejecuta al hacer clic en el botón de volver
     extraElements = null,   // Props para recibir elementos adicionales
-    children                // Contenido principal que se pasará como children
+    children,                // Contenido principal que se pasará como children
+    removeTitleContainer = false,
+    isPanelNavbar = false
 }) => {
     return (
         <div className="toolbar-container">
-            <div className="toolbar-content">
-                <div className="title-container">
+            <div className={`toolbar-content ${isPanelNavbar ? "toolbar-content-panel-navbar":""}`}>
+                {!removeTitleContainer && <div className="title-container">
                     {showBackButton && (
                         <button className="back-button" onClick={onBackClick}>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,12 +22,11 @@ const ToolbarComponent = ({
                             Volver
                         </button>
                     )}
+
                     <h1 className="toolbar-label">{label}</h1>
-                </div>
-                <div>
-                    <div className="extra-elements">
-                        {extraElements}
-                    </div>
+                </div>}
+                <div className="extra-elements">
+                    {extraElements}
                 </div>
             </div>
             <div className="toolbar-children">

@@ -7,6 +7,7 @@ import Loader from "../../ui/loader";
 import AttendanceTable from "../../ui/attendance";
 import { DatePicker } from "../../ui/dateCalendar/datePicker";
 import { PrimaryButton } from "../../ui/button";
+import Input from "../../ui/input"
 
 const BootcampAttendaceView = ({ ...props }) => {
     const {
@@ -21,7 +22,9 @@ const BootcampAttendaceView = ({ ...props }) => {
         handleAttendanceChange,
         handleDateChange,
         selectedDate, 
-        createAttendance
+        createAttendance,
+        observations,
+        setObservations,
     } = BootcampsController(props);
 
     return <>
@@ -30,6 +33,9 @@ const BootcampAttendaceView = ({ ...props }) => {
                 <br />
                 <Col md={12}>
                     <DatePicker label="Fecha de asistencia" onChange={handleDateChange}  minDate={new Date()} value={selectedDate}/>
+                </Col>
+                <Col md={12}>
+                    <Input type="textarea" label="Observaciones" onChange={setObservations} value={observations}/>
                 </Col>
                 <Col md={12}>
                     <AttendanceTable students={attendance} onAttendanceChange={handleAttendanceChange} />

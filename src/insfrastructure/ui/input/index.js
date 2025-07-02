@@ -18,6 +18,7 @@ const Input = ({
     rows = 4,
     currency = 'USD',
     locale,
+    minPercentage = 0,
     currencyDecimals = 2,
     name, // Necesario para los radio buttons
     options = [], // Necesario para radio buttons
@@ -100,6 +101,9 @@ const Input = ({
         } else if (type === 'checkbox') {
             const checked = e.target.checked;
             onChange(checked); // Enviar el valor booleano al callback
+        } else if (type === 'percentage') {
+            const raw = newValue.replace(/[^0-9]/g, '');
+            setInputValue(raw);
         } else {
             setInputValue(newValue);
             onChange(newValue);
@@ -120,6 +124,16 @@ const Input = ({
         if (type === 'currency') {
             setIsEditing(false); // Deja de editar
             setInputValue(formatCurrency(inputValue || 0)); // Aplicar el formato
+        }
+
+        if (type === 'percentage') {
+            const num = parseInt(inputValue);
+            const bounded = isNaN(num)
+                ? minPercentage
+                : Math.min(Math.max(num, minPercentage), 100);
+
+            setInputValue(bounded.toString());
+            onChange(bounded); // Solo aquí notificamos al padre
         }
     };
 
@@ -227,24 +241,40 @@ const Input = ({
                 </label>
             );
         } else if (type === 'radio') {
-            return (
-                <div className="bk-radio-group">
-                    {options.map((option) => (
-                        <label key={option.value} className="bk-radio-label">
-                            <input
-                                type="radio"
-                                name={name}
-                                disabled={disabled}
-                                value={option.value}
-                                checked={value === option.value}
-                                onChange={() => onChange(option.value)}
-                                className="bk-input-radio"
-                            />
-                            {option.label}
-                        </label>
-                    ))}
-                </div>
-            );
+            if (options.length > 0) {
+                return (
+                    <div className="bk-radio-group">
+                        {options.map((option) => (
+                            <label key={option.value} className="bk-radio-label">
+                                <input
+                                    type="radio"
+                                    name={name}
+                                    disabled={disabled}
+                                    value={option.value}
+                                    checked={value === option.value}
+                                    onChange={() => onChange(option.value)}
+                                    className="bk-input-radio"
+                                />
+                                {option.label}
+                            </label>
+                        ))}
+                    </div>
+                );
+            } else {
+                return (
+                    <label className="bk-radio-label">
+                        <input
+                            type="radio"
+                            name={name}
+                            disabled={disabled}
+                            checked={value}
+                            onChange={handleInputChange}
+                            className="bk-input-radio"
+                        />
+                        {checkLabel && <span className="bk-checkbox-text">{checkLabel}</span>}
+                    </label>
+                );
+            }
         } if (type === 'phone') {
             return (
                 <div className="phone-input-container">
@@ -269,6 +299,23 @@ const Input = ({
                     />
                 </div>
             );
+        } else if (type === 'percentage') {
+            return (
+                <div className="bk-percentage-input-wrapper">
+                    <input
+                        type="number"
+                        disabled={disabled}
+                        className="bk-input-field"
+                        placeholder={placeholder}
+                        value={inputValue}
+                        onChange={handleInputChange}
+                        onBlur={handleBlur}
+                        min={minPercentage}
+                        max={100}
+                    />
+                    <span className="bk-percentage-symbol">%</span>
+                </div>
+            );
         } else {
             return (
                 <input
@@ -286,7 +333,7 @@ const Input = ({
     return (
         <div className={`bk-input-container bk-label-${labelPosition}`}>
             {(labelPosition === 'top' || labelPosition === 'left') && renderLabel()}
-            <div className="bk-input-wrapper">
+            <div className={type === "textarea" ? "bk-textarea-wrapper" : "bk-input-wrapper"}>
                 {renderInputField()}
             </div>
             {(labelPosition === 'bottom' || labelPosition === 'right') && renderLabel()}
